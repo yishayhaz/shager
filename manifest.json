@@ -13,5 +13,8 @@
       "resources": ["/audio.mp3"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "icons": {
+    "128": "icon.png"
+  }
 }
