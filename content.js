@@ -14,7 +14,7 @@ function shager() {
 
 function write() {
   const firstBtn = document.querySelector(
-    'button[data-details-container=".js-merge-pr"]'
+    'button[data-details-container=".js-merge-pr"]:not(:disabled)'
   );
 
   if (!firstBtn) return;
@@ -23,6 +23,8 @@ function write() {
     const confirmBtn = document.querySelector(
       "button[type='submit'].js-merge-commit-button"
     );
+
+    console.log(confirmBtn);
 
     confirmBtn.innerHTML = MESSAGE;
     confirmBtn.style.direction = "rtl";
