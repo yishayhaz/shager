@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "content_scripts": [
     {
-      "matches": ["https://github.com/*"],
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "matches": ["https://github.com/*"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["/audio.mp3"],
+      "resources": ["audio.mp3"],
       "matches": ["https://github.com/*"]
     }
   ],

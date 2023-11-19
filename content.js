@@ -24,14 +24,11 @@ function write() {
       "button[type='submit'].js-merge-commit-button"
     );
 
-    console.log(confirmBtn);
-
     confirmBtn.innerHTML = MESSAGE;
     confirmBtn.style.direction = "rtl";
 
     const audio = new Audio(chrome.runtime.getURL("/audio.mp3"));
-
-    confirmBtn.addEventListener("click", audio.play);
+    confirmBtn.addEventListener("click", () => audio.play());
   });
 
   return true;
