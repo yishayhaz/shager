@@ -34,4 +34,17 @@ function write() {
   return true;
 }
 
-window.addEventListener("load", shager);
+function singleSSO() {
+  if (window.location.origin !== GITHUB) return;
+
+  const isSsoPage = document.querySelector("h1.sso-title");
+
+  if (!isSsoPage) return;
+
+  document.querySelector("button[type='submit']")?.click();
+}
+
+window.addEventListener("load", () => {
+  shager();
+  singleSSO();
+});
