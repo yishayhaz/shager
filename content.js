@@ -13,25 +13,37 @@ function shager() {
 }
 
 function write() {
-  const firstBtn = document.querySelector(
+  const squashBtn = [
+    ...document.querySelectorAll("button[data-variant='primary']"),
+  ].find((btn) => btn.textContent === "Squash and merge");
+
+  if (squashBtn) {
+    squashBtn.innerHTML = MESSAGE;
+    squashBtn.style.direction = "rtl";
+
+    const audio = new Audio(chrome.runtime.getURL("/audio.mp3"));
+
+    squashBtn.addEventListener("click", audio.play);
+  }
+
+  const mergeBtn = document.querySelector(
     'button[data-details-container=".js-merge-pr"]:not(:disabled)'
   );
 
-  if (!firstBtn) return;
+  if (mergeBtn) {
+    mergeBtn.addEventListener("click", () => {
+      const confirmMergeBtn = document.querySelector(
+        "button[type='submit'].js-merge-commit-button"
+      );
 
-  firstBtn.addEventListener("click", () => {
-    const confirmBtn = document.querySelector(
-      "button[type='submit'].js-merge-commit-button"
-    );
+      confirmMergeBtn.innerHTML = MESSAGE;
+      confirmMergeBtn.style.direction = "rtl";
 
-    confirmBtn.innerHTML = MESSAGE;
-    confirmBtn.style.direction = "rtl";
-
-    const audio = new Audio(chrome.runtime.getURL("/audio.mp3"));
-    confirmBtn.addEventListener("click", () => audio.play());
-  });
-
-  return true;
+      const audio = new Audio(chrome.runtime.getURL("/audio.mp3"));
+      confirmMergeBtn.addEventListener("click", () => audio.play());
+    });
+    return true;
+  }
 }
 
 function singleSSO() {
